@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import "./Header.css";
 import {
   Add, ExpandMore,
@@ -11,11 +11,16 @@ import {
 } from "@material-ui/icons";
 import {Avatar} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
+// import {Link} from 'react-router-dom'
+// import * as actionCreators from "../../login/store/actionCreators";
+import {connect} from "react-redux";
+import  * as loginActionCreators  from '../../login/store/actionCreators';
 
-
-function Header(){
-  return <div className="header">
+class Header extends Component{
+  render(){
+    return <div className="header">
     <div className="header__left">
+
       <img src="/logo.png" alt="11"/>
 
       {/*<img*/}
@@ -52,11 +57,24 @@ function Header(){
     <div className="header__right">
       <div className="header__info">
         <Avatar />
-        <h4>Sign In</h4>
-        <Avatar />
-          <a href="/login">
-            <h4 >Sign Up</h4>
-          </a>
+        {
+          this.props.login ?
+              (<>
+                {this.props.id}
+                <Avatar />
+                <h4 onClick={this.props.logout}>Log Out</h4>
+              </>
+              )
+              :
+              (<>
+                <a href="/login">
+                 <h4>Sign In</h4>
+                </a>
+                <Avatar />
+                <h4 >Sign Up</h4>
+
+              </>)
+        }
 
       </div>
 
@@ -74,6 +92,24 @@ function Header(){
       </IconButton>
     </div>
   </div>
+  }
 }
 
-export default Header;
+// export default Header;
+const mapStateToProps = (state) =>{
+  return{
+    // 第一个get('login')指的是login中的store中的reducer
+    login: state.get('login').get('login'),
+    id: state.get('login').get('id')
+  }
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    logout(){
+      dispatch(loginActionCreators.logout())
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

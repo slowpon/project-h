@@ -4,11 +4,12 @@
     height: 100vh;
 }
 
-.login > button {
+.log__button > button {
     width: 300px;
     background-color: #2e81f4;
     color: #eff2f5;
     font-weight: 800;
+    margin: 10px;
 }
 
 .login > button:hover {

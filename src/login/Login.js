@@ -2,58 +2,57 @@ import React, {Component} from "react";
 import "./Login.css"
 import {Button} from "@material-ui/core";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 import  * as actionCreators from './store/actionCreators';
 
 class Login extends Component{
   render() {
-    return (
-        <div className="login">
-          <div className="login__img">
-            <img
-                src="/logo.png"
-                alt=""
-            />
+    if (!this.props.login){
+      return (
+          <div className="login">
+            <div className="login__img">
+              <img src="/logo.png" alt=""/>
+            </div>
+            <div className="log__input">
+              <input placeholder="ID" ref={(input) => {this.account = input}}/>
+              <input placeholder="Password" type="password" ref={(input) => {this.password = input}}/>
+            </div>
+            <div className="log__button">
+              <Button type="submit" onClick={() => this.props.click1(this.props.login, this.account,this.password)}>
+                Sign in
+              </Button>
+              <Button type="submit" >
+                Sign Up
+              </Button>
+            </div>
           </div>
-          <div className="log__input">
-            <input placeholder="ID" type="text"/>
-            <input placeholder="Password" type="text"/>
-          </div>
-          <Button type="submit"
-                  onClick={this.props.click1}
-                 >
-            Sign in
-          </Button>
+      )
+    }else {
+      return <Redirect to='/'/>
+    }
 
-          {!this.props.login ? (
-              <>
-                <Button type="submit" >
-                  Sign1
-                </Button>
-              </>
-          ) : (
-              <>
-                <Button type="submit" >
-                  Sign Up2
-                </Button>
-              </>
-          )}
-        </div>
-    )
   }
 }
 
 // export default Login;
 const mapStateToProps = (state) =>{
   return{
+    // 第一个get('login')指的是login中的store中的reducer
     login: state.get('login').get('login')
   }
 }
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    click1(){
-      dispatch(actionCreators.logIn());
-      // console.log(this.props.login);
+    click1(login,accountElem, passwordElem){
+      if (!login){
+        //dispatch(actionCreators.logIn());
+        dispatch(actionCreators.getList(accountElem.value, passwordElem.value));
+        console.log('logggg');
+        console.log(accountElem);
+      }
+      else console.log('error');
+
     }
   }
 }

@@ -4,30 +4,26 @@ import Story from "./Story";
 
 function StoryReel(){
   return <div className="storyReel">
+
     <Story
-        image="https://mk0laterblogouwugirk.kinstacdn.com/wp-content/uploads/2019/01/How-Often-to-Post-to-Facebook-Stories.png"
+        image="fishing-img.jpg"
         profileSrc="/logo.png"
-        title="Hao"
+        title="Fishing"
     />
     <Story
-        image="https://mk0laterblogouwugirk.kinstacdn.com/wp-content/uploads/2019/01/How-Often-to-Post-to-Facebook-Stories.png"
+        image="vivarium-img.jpg"
         profileSrc="/logo.png"
-        title="Hao"
+        title="Micro-Eco"
     />
     <Story
-        image="https://mk0laterblogouwugirk.kinstacdn.com/wp-content/uploads/2019/01/How-Often-to-Post-to-Facebook-Stories.png"
+        image="fish-img.jpg"
         profileSrc="/logo.png"
-        title="Hao"
+        title="Salt Water"
     />
     <Story
-        image="https://mk0laterblogouwugirk.kinstacdn.com/wp-content/uploads/2019/01/How-Often-to-Post-to-Facebook-Stories.png"
+        image="earth-img.jpg"
         profileSrc="/logo.png"
-        title="Hao"
-    />
-    <Story
-        image="https://mk0laterblogouwugirk.kinstacdn.com/wp-content/uploads/2019/01/How-Often-to-Post-to-Facebook-Stories.png"
-        profileSrc="/logo.png"
-        title="Hao"
+        title="Travel"
     />
   </div>
 }

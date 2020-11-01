@@ -13,9 +13,14 @@
     padding: 15px;
 }
 
+.post__top > h2{
+    margin-left: 20px;
+}
+
 .post__avatar {
     margin-right: 10px;
 }
+
 
 .post_topInfo > h3 {
     font-size: medium;
