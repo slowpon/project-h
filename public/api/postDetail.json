@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "data": {
+    "title": "Test Title",
+    "content": "<img src='/fish-img.jpg' alt=''/><p>从结构实现来讲，HashMapp最多只允许一条记录的键为null，</p><p>从结构实现来讲，HashMap是数HashMap最多只允许一条记录的键为null，</p><p>从结构实现来讲，HashMap是数组+链表部分记录的键为null，</p><p>从结构实现来讲，HashMap是数组+链表+红黑许一条记录的键为null，</p>"
+  }
+}

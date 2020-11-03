@@ -1,35 +1,18 @@
 import axios from 'axios';
 import {fromJS} from 'immutable';
 
-// 直接返回对象
-export const logIn = () => ({
-  type: 'log'
+const addFeedList = (list, nextPage) => ({
+  type: 'add_feed_list',
+  list: fromJS(list.articleList),
+  nextPage: nextPage
 })
 
-export const logout = () => ({
-  type: 'change_logout',
-  value: false
-})
-
-const changeLoginState = (id) => ({
-  type: 'change_log_state',
-  id: fromJS(id)
-})
-
-export const getList = (account, password) => {
+export const getMoreList = (page) => {
   return (dispatch) => {
-    axios.get('/api/headerList.json?account=' + account + '&password=' + password).then((res) =>{
-      const data = res.data;
-
-      if (data.success === true){
-        console.log(data.success);
-        dispatch(logIn());
-      }else {
-        alert('login failed')
-      }
-      dispatch(changeLoginState(data.id))
-    }).catch(() => {
-      console.log('error');
+    axios.get('/api/feedMore.json?page=' + page).then((res) =>{
+      const result = res.data.data;
+      dispatch(addFeedList(result, page + 1));
+      console.log(result);
     })
   }
 }

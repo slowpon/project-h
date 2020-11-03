@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "data": {
+    "articleList": [{
+      "id": 3,
+      "username": "5",
+      "timestamp": "2020-10-10",
+      "title": "Eco",
+      "desc": "Lure fishing is a technique of using fake bait to attract fish.",
+      "imgUrl": "https://code.org/shared/images/social-media/codeorg2019_social.png"
+    },{
+      "id": 4,
+      "username": "6",
+      "timestamp": "2020-10-10",
+      "title": "Test7",
+      "desc": "Lure fishing is a technique of using fake bait to attract fish."
+    }
+    ]
+  }
+}

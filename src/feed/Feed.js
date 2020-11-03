@@ -14,10 +14,11 @@ class Feed extends Component {
           <StoryReel/>
           <MessageSender/>
           {
-            this.props.articleList.map((item
+            this.props.articleList.map((item,index
             ) => {
               return (
                   <Post
+                      key={index}
                       profilePic="/logo.png"
                       title={item.get('title')}
                       desc={item.get('desc')}
@@ -28,26 +29,33 @@ class Feed extends Component {
               )
             })
           }
+          <div
+              className="loadMore"
+              onClick={() => this.props.getMoreList(this.props.page)}>Load More</div>
         </div>
     );
   }
 
   componentDidMount() {
-    this.props.changeFeedData();
+    this.props.getFeedData();
   }
 }
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    changeFeedData(){
+    getFeedData(){
       axios.get('/api/feed.json').then((res) => {
         const result = res.data.data;
         const action = {
-          type: 'change_feed_data',
+          type: 'get_feed_data',
           articleList: result.articleList
         }
         dispatch(action);
       })
+    },
+
+    getMoreList(page){
+      dispatch(actionCreators.getMoreList(page));
     }
   }
 }
@@ -55,7 +63,8 @@ const mapDispatchToProps = (dispatch) =>{
 const mapStateToProps = (state) =>{
   return{
     // 第一个get('login')指的是login中的store中的reducer
-    articleList: state.get('feed').get('articleList')
+    articleList: state.get('feed').get('articleList'),
+    page: state.get('feed').get('articlePage')
   }
 }
 

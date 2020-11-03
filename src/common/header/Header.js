@@ -5,6 +5,7 @@ import {
   Flag, Forum,
   Home, NotificationsActive,
   Search,
+  BorderColor,
   StorefrontOutlined,
   SubscriptionsOutlined,
   SupervisedUserCircle
@@ -47,11 +48,14 @@ class Header extends Component{
       <div className="header__option">
         <SubscriptionsOutlined fontSize="large" />
       </div>
-      <div className="header__option">
-        <StorefrontOutlined fontSize="large" />
-      </div>
+
       <div className="header__option">
         <SupervisedUserCircle fontSize="large" />
+      </div>
+      <div className="header__option">
+        <a href="/createPost">
+          <BorderColor fontSize="large" />
+        </a>
       </div>
     </div>
     <div className="header__right">
